@@ -35,7 +35,7 @@ jobs:
         run: |
           set -euo pipefail
           find . -mindepth 1 -maxdepth 1 ! -name '.git' ! -name '.github' ! -name '_unpack' ! -name 'site.zip' -exec rm -rf {} +
-          cp -a _unpack/.
+          cp -a _unpack/. .
           rm -rf _unpack site.zip
           touch .nojekyll
           git config user.email "support@dicefootball.club"
@@ -43,8 +43,3 @@ jobs:
           git add -A
           git commit -m "Publish Engine 2.19.0 recovery preview (ac80da3) static export"
           git push
-      - uses: actions/configure-pages@v5
-      - uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-      - uses: actions/deploy-pages@v4
