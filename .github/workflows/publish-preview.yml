@@ -7,7 +7,7 @@ on:
       - '.github/workflows/publish-preview.yml'
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -16,26 +16,35 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  publish:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - name: Fetch Engine 2.19.0 static export
         run: |
           set -euo pipefail
           curl -fsSL -o site.zip "https://litter.catbox.moe/cd9oe4.zip"
           echo "8f74fc3c1ac745ecc1ba0453b513e7ac  site.zip" | md5sum -c
-          mkdir _site
-          unzip -q site.zip -d _site
-          touch _site/.nojekyll
-          test -f _site/index.html
-          test -f _site/play/index.html
-          test -d _site/_expo
+          mkdir _unpack
+          unzip -q site.zip -d _unpack
+          touch _unpack/.nojekyll
+          test -f _unpack/index.html
+          test -f _unpack/play/index.html
+          test -d _unpack/_expo
+      - name: Commit export to main (legacy user Pages)
+        run: |
+          set -euo pipefail
+          find . -mindepth 1 -maxdepth 1 ! -name '.git' ! -name '.github' ! -name '_unpack' ! -name 'site.zip' -exec rm -rf {} +
+          cp -a _unpack/.
+          rm -rf _unpack site.zip
+          touch .nojekyll
+          git config user.email "support@dicefootball.club"
+          git config user.name "dfc-preview-bot"
+          git add -A
+          git commit -m "Publish Engine 2.19.0 recovery preview (ac80da3) static export"
+          git push
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:
-          path: _site
-      - id: deployment
-        uses: actions/deploy-pages@v4
+          path: .
+      - uses: actions/deploy-pages@v4
