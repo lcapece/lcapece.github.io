@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Dice Football Club — a card-and-dice football game with provably fair dice</title>
+<meta name="description" content="A full afternoon of football at one table: nine plays, two dice, real 2d6 odds, proposition cards, 32 clubs with named rosters — and every roll provably fair. Play free.">
+<meta property="og:title" content="Dice Football Club — the club is open">
+<meta property="og:description" content="Vintage card-and-dice football with provably fair dice. Nine plays, real odds, named rosters. Play free at dicefootball.club.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://dicefootball.club/club">
+<link rel="icon" href="/icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Graduate&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --walnut:#120c06; --walnut-lift:#1d130a;
+    --cream:#f2e7cd; --cream-dim:#e6d7b4; --paper:#ecdfbe;
+    --ink:#2a1c08; --ink-soft:#5c4a26;
+    --brass:#c9a227; --brass-hi:#e8b33a; --brass-shadow:#5a4508;
+    --red:#a83226; --felt:#2f5c35; --felt-dark:#234527;
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto} }
+  body{
+    background-color:var(--walnut);
+    background-image:linear-gradient(rgba(10,6,2,.55),rgba(10,6,2,.72)),url("https://dicefootball-assets.netlify.app/art/table-bg.webp");
+    background-size:cover; background-attachment:fixed; background-position:center;
+    color:var(--cream);
+    font-family:"Crimson Pro",Georgia,serif;
+    font-size:19px; line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--brass-hi)}
+  :focus{outline:none}
+  :focus-visible{outline:3px solid var(--brass-hi);outline-offset:3px;border-radius:2px}
+  img{max-width:100%}
+
+  .wrap{max-width:760px;margin:0 auto;padding:0 20px}
+
+  /* ---------- HERO: the box lid ---------- */
+  .hero{min-height:92vh;display:flex;align-items:center;justify-content:center;padding:48px 16px 40px}
+  .lid{
+    background:var(--cream); color:var(--ink);
+    border:1px solid #b8a273; border-radius:10px;
+    box-shadow:0 24px 64px rgba(0,0,0,.6), 0 4px 12px rgba(0,0,0,.4);
+    max-width:640px; width:100%;
+    padding:44px 36px 40px; text-align:center;
+    position:relative;
+  }
+  .lid::before{ /* printed border, like a box lid rule */
+    content:""; position:absolute; inset:12px;
+    border:2px solid var(--brass); border-radius:6px; pointer-events:none; opacity:.55;
+  }
+  .eyebrow{
+    font-family:"Courier Prime",monospace; font-size:12px; font-weight:700;
+    letter-spacing:.24em; text-transform:uppercase; color:var(--red);
+  }
+  h1{
+    font-family:"Graduate",serif; font-weight:400;
+    font-size:clamp(40px,9vw,68px); line-height:1.02;
+    letter-spacing:.02em; color:var(--ink); margin:14px 0 6px;
+    text-wrap:balance;
+  }
+  h1 .club{color:var(--red)}
+  .premise{
+    font-size:clamp(19px,2.6vw,22px); color:var(--ink);
+    max-width:44ch; margin:10px auto 0; text-wrap:balance;
+  }
+  .dice-row{display:flex;gap:14px;justify-content:center;align-items:center;margin:26px 0 6px}
+  .die{
+    width:52px;height:52px;background:#faf3e3;border:1px solid #9c8a5e;border-radius:9px;
+    box-shadow:inset 0 -4px 0 rgba(0,0,0,.12), 0 6px 10px rgba(0,0,0,.25);
+    display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:repeat(3,1fr);
+    padding:7px;
+  }
+  .pip{width:9px;height:9px;border-radius:50%;background:var(--ink);place-self:center;visibility:hidden}
+  .die[data-face="4"] .pip:nth-child(1),.die[data-face="4"] .pip:nth-child(3),
+  .die[data-face="4"] .pip:nth-child(7),.die[data-face="4"] .pip:nth-child(9){visibility:visible}
+  .die[data-face="3"] .pip:nth-child(1),.die[data-face="3"] .pip:nth-child(5),
+  .die[data-face="3"] .pip:nth-child(9){visibility:visible}
+  @media (prefers-reduced-motion: no-preference){
+    .die{animation:settle .7s cubic-bezier(.2,1.6,.4,1) both}
+    .die+.die{animation-delay:.12s}
+    @keyframes settle{from{transform:translateY(-26px) rotate(-14deg);opacity:0}to{transform:none;opacity:1}}
+  }
+  .dice-note{font-family:"Courier Prime",monospace;font-size:13px;color:var(--ink-soft);letter-spacing:.06em}
+  .cta{
+    display:inline-block; margin-top:26px;
+    font-family:"Graduate",serif; font-size:21px; letter-spacing:.06em;
+    color:#1a1204; text-decoration:none;
+    background:var(--brass); border:2px solid #8a6a10; border-bottom:6px solid var(--brass-shadow);
+    border-radius:8px; padding:15px 30px 13px;
+  }
+  .cta:hover{background:var(--brass-hi)}
+  .cta:active{transform:translateY(3px);border-bottom-width:3px}
+  .fineprint-link{
+    display:block;margin-top:16px;font-family:"Courier Prime",monospace;font-size:13px;
+    color:var(--ink-soft);letter-spacing:.08em;text-decoration:underline;text-underline-offset:3px;
+  }
+  .sealnote{margin-top:18px;font-family:"Courier Prime",monospace;font-size:12px;color:var(--ink-soft);letter-spacing:.12em;text-transform:uppercase}
+  .sealnote b{color:var(--red)}
+
+  /* ---------- shared section furniture ---------- */
+  section{padding:64px 0}
+  .slip, .spread, .certificate, .register{
+    border-radius:8px; box-shadow:0 16px 44px rgba(0,0,0,.55);
+  }
+  .sec-eyebrow{
+    font-family:"Courier Prime",monospace;font-size:12px;font-weight:700;
+    letter-spacing:.22em;text-transform:uppercase;margin-bottom:6px;
+  }
+  h2{
+    font-family:"Graduate",serif;font-weight:400;font-size:clamp(26px,5vw,38px);
+    line-height:1.08;letter-spacing:.02em;text-wrap:balance;
+  }
+  .lede{margin-top:12px;max-width:60ch}
+
+  /* ---------- HOW A DOWN WORKS: three slips tossed on the table ---------- */
+  .downworks .intro{color:var(--cream);max-width:56ch;margin-bottom:28px}
+  .downworks .intro .sec-eyebrow{color:var(--brass-hi)}
+  .downworks h2{color:var(--cream)}
+  .slips{display:flex;flex-direction:column;gap:18px}
+  .slip{
+    background:var(--cream);color:var(--ink);border:1px solid #b8a273;
+    padding:22px 24px;max-width:560px;
+  }
+  .slip:nth-child(1){transform:rotate(-.7deg);align-self:flex-start}
+  .slip:nth-child(2){transform:rotate(.5deg);align-self:center}
+  .slip:nth-child(3){transform:rotate(-.4deg);align-self:flex-end}
+  .slip h3{font-family:"Graduate",serif;font-weight:400;font-size:19px;color:var(--red);margin-bottom:6px;letter-spacing:.04em}
+  .slip p{font-size:17.5px}
+  @media (max-width:640px){ .slip{align-self:stretch !important;max-width:none} }
+
+  /* ---------- THE NINE PLAYS: rulebook spread ---------- */
+  .spread{
+    background:var(--paper); color:var(--ink);
+    border:1px solid #b8a273; padding:34px 30px 30px; position:relative;
+  }
+  .spread::after{ /* center fold */
+    content:"";position:absolute;top:0;bottom:0;left:50%;width:1px;
+    background:linear-gradient(rgba(90,69,8,0),rgba(90,69,8,.25),rgba(90,69,8,0));
+  }
+  @media (max-width:640px){ .spread::after{display:none} }
+  .spread .sec-eyebrow{color:var(--red)}
+  .rulehead{display:flex;align-items:baseline;gap:14px;border-bottom:2px solid var(--ink);padding-bottom:10px;margin-bottom:4px}
+  .rulehead .sectionmark{font-family:"Graduate",serif;font-size:44px;color:var(--red);line-height:1}
+  .playtable{width:100%;border-collapse:collapse;font-family:"Courier Prime",monospace}
+  .playtable caption{text-align:left;font-family:"Crimson Pro",serif;font-size:17px;color:var(--ink-soft);padding:12px 0 14px;font-style:italic}
+  .playtable th{
+    text-align:left;font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;
+    color:var(--ink-soft);border-bottom:1px solid var(--ink);padding:6px 10px 6px 0;
+  }
+  .playtable td{border-bottom:1px dotted #b8a273;padding:9px 10px 8px 0;font-size:14.5px;vertical-align:top}
+  .playtable td:first-child{font-weight:700;white-space:nowrap}
+  .playtable tr:last-child td{border-bottom:none}
+  .table-scroller{overflow-x:auto}
+  .rulefoot{margin-top:16px;font-size:16.5px;color:var(--ink-soft);font-style:italic;max-width:58ch}
+
+  /* ---------- PROPOSITIONS: the felt ---------- */
+  .feltsec .feltcard{
+    background:linear-gradient(180deg,var(--felt),var(--felt-dark));
+    border:2px solid #1a331d; border-radius:8px; box-shadow:0 16px 44px rgba(0,0,0,.55), inset 0 0 60px rgba(0,0,0,.25);
+    color:#eef2e2; padding:34px 30px;
+  }
+  .feltsec .sec-eyebrow{color:var(--brass-hi)}
+  .feltsec h2{color:#f4f7e8}
+  .propgrid{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:24px}
+  @media (max-width:640px){ .propgrid{grid-template-columns:1fr} }
+  .propcard{
+    background:var(--cream);color:var(--ink);border-radius:7px;border:1px solid #b8a273;
+    padding:18px 18px 16px; box-shadow:0 8px 18px rgba(0,0,0,.35);
+  }
+  .propcard h3{font-family:"Graduate",serif;font-weight:400;font-size:17px;color:var(--red);letter-spacing:.04em;margin-bottom:8px}
+  .propcard p{font-size:16.5px}
+  .bands{display:flex;height:14px;border-radius:4px;overflow:hidden;margin:12px 0 6px;border:1px solid #8a6a10}
+  .band-jack{background:var(--brass);flex:278}
+  .band-cons{background:#8fae72;flex:639}
+  .band-back{background:var(--red);flex:83}
+  .bandkey{font-family:"Courier Prime",monospace;font-size:11.5px;color:var(--ink-soft);letter-spacing:.04em}
+  .felt-notes{margin-top:22px;font-size:17.5px;max-width:62ch}
+  .felt-notes p+p{margin-top:10px}
+  .felt-notes .mono{font-family:"Courier Prime",monospace;font-size:14.5px;color:var(--brass-hi)}
+
+  /* ---------- THE SEAL: certificate ---------- */
+  .certificate{
+    background:var(--cream);color:var(--ink);padding:38px 34px;text-align:center;
+    border:1px solid #b8a273;position:relative;
+  }
+  .certificate::before{content:"";position:absolute;inset:10px;border:3px double var(--brass);border-radius:5px;pointer-events:none}
+  .medal{
+    width:74px;height:74px;border-radius:50%;margin:0 auto 14px;
+    background:radial-gradient(circle at 35% 30%, var(--brass-hi), var(--brass) 55%, #8a6a10);
+    border:2px solid #8a6a10;display:flex;align-items:center;justify-content:center;
+    font-family:"Graduate",serif;font-size:30px;color:#241a04;
+    box-shadow:0 6px 14px rgba(0,0,0,.3);
+  }
+  .certificate .sec-eyebrow{color:var(--red)}
+  .certificate .lede{margin-left:auto;margin-right:auto;max-width:52ch}
+  .hashline{
+    margin-top:20px;font-family:"Courier Prime",monospace;font-size:12.5px;color:var(--ink-soft);
+    letter-spacing:.04em;word-break:break-all;max-width:52ch;margin-left:auto;margin-right:auto;
+  }
+  .certclaim{margin-top:14px;font-size:19px;font-weight:600}
+
+  /* ---------- CLUBS & BINDER ---------- */
+  .ledger{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+  @media (max-width:640px){ .ledger{grid-template-columns:1fr} }
+  .ledger .page{
+    background:var(--cream-dim);color:var(--ink);border:1px solid #b8a273;border-radius:7px;
+    padding:26px 24px;box-shadow:0 12px 30px rgba(0,0,0,.5);
+  }
+  .ledger .sec-eyebrow{color:var(--red)}
+  .ledger h3{font-family:"Graduate",serif;font-weight:400;font-size:21px;letter-spacing:.03em;margin-bottom:8px}
+  .ledger p{font-size:17px}
+  .bignum{font-family:"Graduate",serif;font-size:46px;color:var(--red);line-height:1;margin:8px 0 2px}
+  .bignum small{font-family:"Courier Prime",monospace;font-size:12px;color:var(--ink-soft);display:block;letter-spacing:.16em;text-transform:uppercase;margin-top:6px}
+
+  /* ---------- THE REGISTER: pricing ---------- */
+  .register{background:var(--cream);color:var(--ink);border:1px solid #b8a273;padding:34px 30px}
+  .register .sec-eyebrow{color:var(--red)}
+  .pricecols{display:grid;grid-template-columns:1.15fr 1fr;gap:26px;margin-top:20px}
+  @media (max-width:640px){ .pricecols{grid-template-columns:1fr} }
+  .pricecols h3{font-family:"Graduate",serif;font-weight:400;font-size:19px;letter-spacing:.04em;margin-bottom:10px}
+  .freebox h3{color:var(--felt)}
+  .passbox h3{color:var(--red)}
+  .register ul{list-style:none}
+  .register li{padding:7px 0 7px 26px;position:relative;font-size:17px;border-bottom:1px dotted #b8a273}
+  .register li:last-child{border-bottom:none}
+  .register li::before{content:"✓";position:absolute;left:2px;color:var(--brass);font-weight:700}
+  .passbox{background:#efe2c0;border:1px solid var(--brass);border-radius:7px;padding:20px 20px 18px}
+  .pricelines{margin:14px 0 4px}
+  .priceline{font-family:"Graduate",serif;font-size:24px;line-height:1.3}
+  .priceline small{font-family:"Courier Prime",monospace;font-size:12px;letter-spacing:.1em;color:var(--ink-soft);display:block;margin:2px 0 10px}
+  .guarantee{font-family:"Courier Prime",monospace;font-size:12.5px;color:var(--ink-soft);letter-spacing:.06em;margin-top:8px}
+  .neverforsale{margin-top:18px;font-style:italic;color:var(--ink-soft);font-size:16.5px;max-width:60ch}
+
+  /* ---------- FOOTER ---------- */
+  .finale{text-align:center;padding:70px 0 26px}
+  .finale h2{color:var(--cream)}
+  .finale .cta{margin-top:24px}
+  footer{
+    padding:34px 20px 46px;text-align:center;
+    font-family:"Courier Prime",monospace;font-size:12.5px;color:#bfae87;letter-spacing:.08em;
+  }
+  footer a{color:#d9c795;text-decoration:underline;text-underline-offset:3px;margin:0 10px}
+  footer .ios{display:block;margin-top:12px;color:#8f815f}
+</style>
+</head>
+<body>
+
+<!-- ============ THE BOX LID ============ -->
+<header class="hero">
+  <div class="lid">
+    <p class="eyebrow">A card-and-dice football game · from the long-box era</p>
+    <h1>DICE<br>FOOTBALL<br><span class="club">CLUB</span></h1>
+    <p class="premise">A deck of play cards, two dice, and a full afternoon of football at one table.</p>
+    <div class="dice-row" role="img" aria-label="Two dice showing four and three — seven, an honest average">
+      <div class="die" data-face="4"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+      <div class="die" data-face="3"><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span><span class="pip"></span></div>
+    </div>
+    <p class="dice-note">seven — an honest average, and the house can prove it</p>
+    <a class="cta" href="/">TAKE THE FIELD — PLAY FREE</a>
+    <a class="fineprint-link" href="#rulebook">or read the fine print first ↓</a>
+    <p class="sealnote">Every roll <b>sealed before kickoff</b> · provably fair</p>
+  </div>
+</header>
+
+<!-- ============ HOW A DOWN WORKS ============ -->
+<section class="downworks" aria-labelledby="h-down">
+  <div class="wrap">
+    <div class="intro">
+      <p class="sec-eyebrow">First, the whole game in one down</p>
+      <h2 id="h-down">HOW A DOWN WORKS</h2>
+    </div>
+    <div class="slips">
+      <div class="slip">
+        <h3>PICK YOUR PLAY</h3>
+        <p>You hold a hand of four play cards from a nine-play deck. Each card prints a target number. Want a fresh hand? That costs a real timeout.</p>
+      </div>
+      <div class="slip">
+        <h3>THE DEFENSE CALLS ITS SHOT</h3>
+        <p>The other coach reads your formation and commits — stop the run, cover short, or cover deep. Guess right and your target gets harder. Every down is a hand of poker.</p>
+      </div>
+      <div class="slip">
+        <h3>TWO DICE DECIDE</h3>
+        <p>Hit the target or better and the play connects — then the good cards throw again for yardage. Snake eyes is a catastrophe. Boxcars is a game-breaker. Seven is just Tuesday.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE NINE PLAYS ============ -->
+<section id="rulebook" aria-labelledby="h-plays">
+  <div class="wrap">
+    <div class="spread">
+      <p class="sec-eyebrow">From here down, it's for the purists</p>
+      <div class="rulehead">
+        <span class="sectionmark" aria-hidden="true">§1</span>
+        <h2 id="h-plays">THE NINE PLAYS</h2>
+      </div>
+      <div class="table-scroller">
+        <table class="playtable">
+          <caption>Nine plays, nine genuinely different gambles — each card carries its own dice math. This is the actual shipping table, not marketing.</caption>
+          <thead>
+            <tr><th scope="col">Play</th><th scope="col">The gain roll</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>SNEAK</td><td>Short and sure — takes what the line gives.</td></tr>
+            <tr><td>RUN</td><td>The high die. Steady, honest yardage.</td></tr>
+            <tr><td>SCREEN</td><td>The low die. Patience, priced accordingly.</td></tr>
+            <tr><td>SLANT</td><td>The sum of both dice.</td></tr>
+            <tr><td>PLAY-ACTION</td><td>The sum — and doubles pay double.</td></tr>
+            <tr><td>DEEP BOMB</td><td>2d6 × 2. Snake eyes is a pick.</td></tr>
+            <tr><td>REVERSE</td><td>Doubles: one die × 5. Anything else: lose the low die.</td></tr>
+            <tr><td>FLEA FLICKER</td><td>LET IT RIDE — press to add each roll; bank when your nerve gives; doubles on a press is a fumble.</td></tr>
+            <tr><td>HAIL MARY</td><td>Connects only the hard way — doubles totaling 8 or better.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="rulefoot">Runs take real tackles-for-loss. Team cards rate RUN/PASS/DEF summing to ten — outrating the opposing defense shifts target numbers ±1, ±2 at a three-point gap. Read the matchup off two cards, tabletop-style.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE PROPOSITION LAYER ============ -->
+<section class="feltsec" aria-labelledby="h-props">
+  <div class="wrap">
+    <div class="feltcard">
+      <p class="sec-eyebrow">§2 · The felt</p>
+      <h2 id="h-props">THE PROPOSITION LAYER</h2>
+      <div class="propgrid">
+        <div class="propcard">
+          <h3>THE PROPOSITION CARDS</h3>
+          <p>One blind card per team, per quarter. The payout grammar is honest proposition-bet math:</p>
+          <div class="bands" role="img" aria-label="Payout bands: jackpot about 28 percent, consolation about 64 percent, backfire about 8 percent">
+            <span class="band-jack"></span><span class="band-cons"></span><span class="band-back"></span>
+          </div>
+          <p class="bandkey">JACKPOT ~28% · CONSOLATION ~64% · BACKFIRE ~8%</p>
+          <p>A place bet doesn't pay <em>nothing</em> when it misses the number — it pays <em>less</em>. Win shapes vary like a real table: doubles, evens, a six on either die.</p>
+        </div>
+        <div class="propcard">
+          <h3>DEFENSIVE PROPOSITIONS</h3>
+          <p><strong>Jump the route.</strong> <strong>Send the house.</strong> Declared gambles the defense can take before the dice fly — decline them and the down resolves as if they never existed. The defense doesn't just guess. It can put money on the table.</p>
+        </div>
+      </div>
+      <div class="felt-notes">
+        <p><span class="mono">SPECIAL TEAMS, AT REAL RATES —</span> the coffin corner pins inside the five on 2, 3, 11, 12: a 16.7% shot, the actual NFL inside-the-ten rate. Punts go 38 + 2d6 — average 45, the real number. The onside kick recovers only on a rolled seven: <em>seven out, the dice change hands.</em></p>
+        <p><span class="mono">THE FAKE PUNT HAS A BELIEVABILITY SYSTEM —</span> 9+ when everyone expects the punt, 11+ when nobody buys it. Deception, priced honestly.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE LEAGUE SEAL ============ -->
+<section aria-labelledby="h-seal">
+  <div class="wrap">
+    <div class="certificate">
+      <div class="medal" aria-hidden="true">★</div>
+      <p class="sec-eyebrow">§3 · The League Seal</p>
+      <h2 id="h-seal">PROVABLY FAIR DICE</h2>
+      <p class="lede">Before kickoff, every roll of your game is cryptographically sealed. After the final gun, you can verify the seal and prove the dice fell exactly as shown — no reshuffles, no mercy, no thumb on the scale.</p>
+      <p class="hashline" aria-hidden="true">SEALED · 7f3a…c41e · VERIFIED — DICE TRUE</p>
+      <p class="certclaim">No dice game in history could prove its rolls were honest.<br>This one can.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CLUBS & THE BINDER ============ -->
+<section aria-labelledby="h-clubs">
+  <div class="wrap">
+    <div class="ledger">
+      <div class="page">
+        <p class="sec-eyebrow">§4 · The clubs</p>
+        <h3 id="h-clubs">EVERY CLUB CARRIES A ROSTER</h3>
+        <p class="bignum">32 <small>clubs · 704 named men</small></p>
+        <p>All thirty-two clubs field a named twenty-two-man roster — and the broadcast booth actually speaks the names. The roster depth every Strat-O-Matic heart demands.</p>
+      </div>
+      <div class="page">
+        <p class="sec-eyebrow">§5 · The Binder · free</p>
+        <h3>EVERY GAME IS KEPT</h3>
+        <p class="bignum">60:00 <small>of football · on the record</small></p>
+        <p>Full game logs, box scores, an almanac, and a brass records wall — free with the game, not locked behind Big League. Purists keep score. This game keeps it for them — and the League Seal lets any game on the shelf be re-rolled and proven true.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ THE REGISTER ============ -->
+<section aria-labelledby="h-price">
+  <div class="wrap">
+    <div class="register">
+      <p class="sec-eyebrow">§6 · The register</p>
+      <h2 id="h-price">THE FREE GAME IS A WHOLE GAME</h2>
+      <div class="pricecols">
+        <div class="freebox">
+          <h3>FREE, NO ACCOUNT</h3>
+          <ul>
+            <li>Both rule modes — every play card, every proposition</li>
+            <li>A complete four-quarter game against the computer</li>
+            <li>Pass &amp; play for two coaches on one screen</li>
+            <li>Overtime, special teams, the full football shell</li>
+            <li>The League Seal on every game — provably fair</li>
+            <li>The Binder — game logs, box scores, records on the shelf</li>
+            <li>No ads. No energy meters. No tricks.</li>
+          </ul>
+        </div>
+        <div class="passbox">
+          <h3>BIG LEAGUE ADDS</h3>
+          <p>A 32-club league season with standings and a championship. The Front Office as it ships today: the Spotlight Trio (three named men with Signatures you call once a game) and the Trade Desk. The premium broadcast booth.</p>
+          <div class="pricelines">
+            <p class="priceline">$9 a month<small>7 days free, then $9/mo — card required; cancel any time</small></p>
+          </div>
+          <p class="guarantee">CARD REQUIRED FOR THE TRIAL · CANCEL ANY TIME FROM YOUR ACCOUNT</p>
+        </div>
+      </div>
+      <p class="neverforsale">And a standing rule, in writing: skill is never for sale. Paid buys depth, memory, and presentation — dice math and ratings are untouchable, forever. The purist's game can't be bought out from under them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FINALE ============ -->
+<section class="finale" aria-labelledby="h-final">
+  <div class="wrap">
+    <h2 id="h-final">THE CLUB IS OPEN</h2>
+    <a class="cta" href="/">TAKE THE FIELD — PLAY FREE</a>
+  </div>
+</section>
+
+<footer>
+  <nav aria-label="Site">
+    <a href="/">Play</a> · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/support.html">Support</a>
+  </nav>
+  <span class="ios">Coming to the App Store as Dice Football Club · “Gridiron Roll.”</span>
+  <span class="ios">© <span data-current-year>2026</span> DataAutomation.ai, LLC</span>
+</footer>
+
+<script>
+  document.querySelectorAll('[data-current-year]').forEach(function (node) {
+    node.textContent = String(new Date().getFullYear());
+  });
+</script>
+</body>
+</html>

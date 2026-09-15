@@ -1,0 +1,440 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#160d08" />
+    <meta
+      name="description"
+      content="Dice Football Club presents a Gridiron Roll — a card-and-dice American football game."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Dice Football Club" />
+    <meta property="og:title" content="Dice Football Club presents a Gridiron Roll" />
+    <meta
+      property="og:description"
+      content="Call the play. Read the defense. Let an honest roll connect — then another for the yards."
+    />
+    <meta property="og:image" content="./assets/home-social-v1.jpg" />
+    <title>Dice Football Club presents a Gridiron Roll</title>
+    <link rel="icon" href="./assets/favicon.png" />
+    <link rel="stylesheet" href="./styles.css?v=2318" />
+    <script src="./launcher.js?v=2254" defer></script>
+    <script>
+      (function () {
+        if (navigator.serviceWorker && navigator.serviceWorker.controller && !sessionStorage.getItem('dfc-sw-bust')) {
+          sessionStorage.setItem('dfc-sw-bust', '1');
+          Promise.resolve()
+            .then(function () { return navigator.serviceWorker.getRegistrations(); })
+            .then(function (rs) { return Promise.all(rs.map(function (r) { return r.unregister(); })); })
+            .then(function () { return window.caches ? caches.keys() : []; })
+            .then(function (keys) { return Promise.all(keys.map(function (k) { return caches.delete(k); })); })
+            .then(function () { location.reload(); });
+          return;
+        }
+        if ('serviceWorker' in navigator) {
+          navigator.serviceWorker.getRegistrations().then(function (rs) {
+            rs.forEach(function (r) { r.unregister(); });
+          });
+        }
+        if (window.caches) {
+          caches.keys().then(function (keys) {
+            keys.forEach(function (k) { caches.delete(k); });
+          });
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <a class="skip-link" href="#play-game">Skip to play</a>
+
+    <main>
+      <section class="hero" aria-labelledby="game-title">
+        <div class="hero-copy">
+          <h1 id="game-title" class="brand-lockup">
+            <span class="club-name">Dice Football Club</span>
+            <span class="presents">presents a</span>
+            <span class="game-name">Gridiron Roll</span>
+          </h1>
+
+          <p class="hero-rule">
+            Call the play. Read the defense.<br />
+            Let an honest roll connect — then another for the yards.
+          </p>
+
+          <div class="hero-actions">
+            <a
+              id="play-game"
+              class="launch-button"
+              href="/play/?launch=preseason"
+              data-launch-game
+            >
+              <span class="launch-button__small">No account · No ads</span>
+              <span class="launch-button__main">Play free Pre-Season</span>
+              <span class="launch-button__arrow" aria-hidden="true">→</span>
+            </a>
+            <a
+              class="compare-link"
+              href="/play/?login=1"
+              data-launch-game
+            >Log in to resume</a>
+            <a class="compare-link" href="#seasons">Compare Pre-Season and Big League</a>
+          </div>
+
+          <p class="hero-footnote">A complete four-quarter football game—not a demo.</p>
+        </div>
+
+        <div class="tabletop-scene" aria-hidden="true">
+          <div class="lamp-glow"></div>
+          <div class="field-rig">
+            <img
+              class="cardboard-field"
+              src="./assets/stadium-field.png"
+              alt=""
+              width="1280"
+              height="853"
+            />
+            <div class="field-sheen"></div>
+          </div>
+
+          <img
+            class="game-box"
+            src="./assets/game-box.webp"
+            alt=""
+            width="632"
+            height="504"
+          />
+        </div>
+
+        <div class="hero-dice-dock">
+          <div class="dice-tray" aria-hidden="true">
+            <div class="die-seat die-seat--one">
+              <span class="die-shadow"></span>
+              <span class="die-hop">
+                <span class="die die-one">
+                  <span class="die-face face-front" data-value="1"><i class="cc"></i></span>
+                  <span class="die-face face-right" data-value="2"><i class="tr"></i><i class="bl"></i></span>
+                  <span class="die-face face-left" data-value="5"><i class="tl"></i><i class="tr"></i><i class="cc"></i><i class="bl"></i><i class="br"></i></span>
+                  <span class="die-face face-back" data-value="6"><i class="tl"></i><i class="ml"></i><i class="bl"></i><i class="tr"></i><i class="mr"></i><i class="br"></i></span>
+                  <span class="die-face face-bottom" data-value="3"><i class="tl"></i><i class="cc"></i><i class="br"></i></span>
+                  <span class="die-face face-top" data-value="4"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></span>
+                </span>
+              </span>
+            </div>
+            <div class="die-seat die-seat--d20">
+              <span class="die-shadow"></span>
+              <span class="die-hop">
+                <img
+                  class="die-d20"
+                  src="./assets/d20-face-20.png"
+                  alt=""
+                  width="384"
+                  height="384"
+                />
+              </span>
+            </div>
+            <div class="die-seat die-seat--two">
+              <span class="die-shadow"></span>
+              <span class="die-hop">
+                <span class="die die-two">
+                  <span class="die-face face-front" data-value="5"><i class="tl"></i><i class="tr"></i><i class="cc"></i><i class="bl"></i><i class="br"></i></span>
+                  <span class="die-face face-right" data-value="6"><i class="tl"></i><i class="ml"></i><i class="bl"></i><i class="tr"></i><i class="mr"></i><i class="br"></i></span>
+                  <span class="die-face face-left" data-value="1"><i class="cc"></i></span>
+                  <span class="die-face face-back" data-value="2"><i class="tr"></i><i class="bl"></i></span>
+                  <span class="die-face face-bottom" data-value="4"><i class="tl"></i><i class="tr"></i><i class="bl"></i><i class="br"></i></span>
+                  <span class="die-face face-top" data-value="3"><i class="tl"></i><i class="cc"></i><i class="br"></i></span>
+                </span>
+              </span>
+            </div>
+          </div>
+
+          <a class="season-ticket" href="#seasons">
+            <span>What comes in each season?</span>
+            <span aria-hidden="true">↓</span>
+          </a>
+        </div>
+
+        <p class="launch-status" role="status" aria-live="polite"></p>
+      </section>
+
+      <section id="seasons" class="season-section" aria-labelledby="season-title">
+        <div class="playbook-sheet">
+          <header class="season-heading">
+            <div>
+              <p class="section-kicker">Coach’s depth chart</p>
+              <h2 id="season-title">
+                <span>Pre-Season</span>
+                <span class="season-second-line">
+                  <span class="season-vs">vs</span>
+                  <span class="season-pro">Big League</span>
+                </span>
+              </h2>
+            </div>
+            <p>
+              Pre-Season is the whole game in the box, free forever. The list below is
+              what is actually in the game today. Big League adds full league seasons,
+              the Spotlight Trio, the Trade Desk, and the premium broadcast booth —
+              $9 a month after a 7-day trial (card required; cancel any time). The dice stay the same for every coach.
+            </p>
+          </header>
+
+          <div class="chart-frame">
+            <table class="season-chart">
+              <caption class="visually-hidden">
+                Features included in free Pre-Season and paid Big League
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">What’s in the box</th>
+                  <th scope="col">
+                    <span>Pre-Season</span>
+                    <small>Free forever</small>
+                  </th>
+                  <th scope="col">
+                    <span>Big League</span>
+                    <small>$9/mo · 7-day trial</small>
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr class="chart-band">
+                  <th colspan="3" scope="rowgroup">What’s in the box — free</th>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    A complete four-quarter game
+                    <small>Full football shell, not a demo — overtime, game clock, play clock, two timeouts a half</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Both rule sets
+                    <small>Purist nine-card deck, or the quick On-the-Go three-play game</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    The full playbook
+                    <small>Sneak · Run · Screen · Short Pass · Play-Action · Deep Pass · Reverse · Trick · Hail Mary</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Connect roll, gain roll
+                    <small>Natural 1 is a turnover · natural 20 is a touchdown · yards come from a second roll</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Gain rolls
+                    <small>High die, low die, sum, doubles-pay-double, and the Flea Flicker Let It Ride</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    The Breakaway die
+                    <small>One extra d6 after a high-risk connect — 8, 15, or 35 more yards, or tackled on the spot</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Special teams
+                    <small>Punt, coffin corner, onside punt, fake punt, field goals, extra point or two</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Proposition cards
+                    <small>12 of 36 dealt each match — face-down side bets on the dice</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Momentum cards
+                    <small>Surge (+2 your roll) and Iron Wall (+2 their difficulty)</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Two cameras
+                    <small>End-zone and broadcast views with play-by-play that names the players</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Pass &amp; Play
+                    <small>Two coaches, one device</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Full game clock
+                    <small>5, 10, or 15-minute quarters · play clock · two timeouts a half</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    The Binder
+                    <small>Game logs, box scores, almanac, records, and the League Seal — free with the game, not locked behind Big League</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Free with the game</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Free with the game</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Provably Fair Dice
+                    <small>Mathematically verifiable integrity — you can check the math yourself</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr class="chart-band chart-band--pro">
+                  <th colspan="3" scope="rowgroup">Big League — on your shelf today</th>
+                </tr>
+                <tr>
+                  <th scope="row">
+                    Full league seasons
+                    <small>A 32-club league: schedule, standings, and a championship run with the same club</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="not-included"><b aria-hidden="true">—</b><span class="visually-hidden">Not in Pre-Season</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Log on and pick up where you left off
+                    <small>Come back, finish games, and play the season with the same club</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="not-included"><b aria-hidden="true">—</b><span class="visually-hidden">Not in Pre-Season</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Season schedule &amp; standings
+                    <small>See every opponent, completed result, and the road to the playoffs</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="not-included"><b aria-hidden="true">—</b><span class="visually-hidden">Not in Pre-Season</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    The Spotlight Trio
+                    <small>Three named men — Field General, Playmaker, Stopper — each with one Signature you call once a game</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="not-included"><b aria-hidden="true">—</b><span class="visually-hidden">Not in Pre-Season</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    The Trade Desk
+                    <small>Propose deals to 31 computer front offices, each with its own general manager</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="not-included"><b aria-hidden="true">—</b><span class="visually-hidden">Not in Pre-Season</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+                <tr>
+                  <th scope="row">
+                    Premium broadcast booth
+                    <small>The Big League booth presentation layered on the same cameras and names</small>
+                  </th>
+                  <td data-label="Pre-Season"><span class="not-included"><b aria-hidden="true">—</b><span class="visually-hidden">Not in Pre-Season</span></span></td>
+                  <td data-label="Big League"><span class="included"><b aria-hidden="true">✓</b><span class="visually-hidden">Included</span></span></td>
+                </tr>
+
+
+              </tbody>
+            </table>
+          </div>
+
+          <p class="season-price">
+            <strong>Big League:</strong> $9 a month
+            <small>7 days free, then $9/mo — card required; cancel any time from your account</small>
+          </p>
+
+          <article class="fair-play" id="fair-dice" aria-labelledby="fair-title">
+            <p class="section-kicker">Provably Fair Dice</p>
+            <h2 id="fair-title">The house cannot pick the dice it likes.</h2>
+            <p class="fair-play__lead">
+              Mathematically verifiable integrity. The dice are the same for every
+              coach. There is no statistical skewing. Coaching is the skill. Player cards
+              change the choices you make, not the dice.
+            </p>
+            <ol class="fair-play__steps">
+              <li><strong>Before kickoff</strong> the club seals a fingerprint of its dice plan — the brass seal at the coin toss.</li>
+              <li><strong>Your KICK IT OFF tap</strong> then cuts the deck, mixing your own timing in after the seal is already set.</li>
+              <li><strong>At the final gun</strong> the envelope opens, and VERIFY THIS GAME in the Binder re-rolls the entire game from it. Match, and the book is stamped VERIFIED — DICE TRUE.</li>
+            </ol>
+            <p class="fair-play__foot">
+              The dice code is printed inside the game in full, and the build fails if it ever drifts from what shipped.
+            </p>
+          </article>
+
+          <a class="launch-button launch-button--final" href="/play/?launch=preseason" data-launch-game>
+            <span class="launch-button__small">Kick off with the complete free game</span>
+            <span class="launch-button__main">Roll into Pre-Season</span>
+            <span class="launch-button__arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>Dice Football Club presents a Gridiron Roll</p>
+      <nav aria-label="Legal and support">
+        <a href='/privacy'>Privacy</a>
+        <a href='/terms'>Terms</a>
+        <a href='/support'>Support</a>
+      </nav>
+      <p>© <span data-current-year>2026</span> DataAutomation.ai, LLC</p>
+    </footer>
+
+    <noscript>
+      <p class="noscript-note">
+        Animation is unavailable, but the game is ready.
+        <a href="/play/?launch=preseason">Play Gridiron Roll</a>.
+      </p>
+    </noscript>
+  </body>
+</html>

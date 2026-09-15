@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <title>Dice Football Club</title>
+    <!-- The `react-native-web` recommended style reset: https://necolas.github.io/react-native-web/docs/setup/#root-element -->
+    <style id="expo-reset">
+      /* These styles make the body full-height */
+      html,
+      body {
+        height: 100%;
+      }
+      /* These styles disable body scrolling if you are using <ScrollView> */
+      body {
+        overflow: hidden;
+      }
+      /* These styles make the root element full-height */
+      #root {
+        display: flex;
+        height: 100%;
+        flex: 1;
+      }
+    </style>
+  <meta name="theme-color" content="#31200f">
+<meta name="description" content="Call the play, read the defense, and let two dice settle every snap in a strategic American football game.">
+<link rel="icon" href="/favicon.ico"/><!-- dfc-production-meta -->
+<link rel="canonical" href="https://dicefootball.club/" />
+<meta property="og:type" content="website" />
+<meta property="og:site_name" content="Dice Football Club" />
+<meta property="og:title" content="Dice Football Club — Gridiron Roll" />
+<meta property="og:description" content="Call the play. Read the defense. Roll for the game." />
+<meta property="og:url" content="https://dicefootball.club/" />
+<meta property="og:image" content="https://dicefootball.club/home-social-v1.jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="A tabletop football field with red and blue figures, play cards, a football, and two dice" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="Dice Football Club — Gridiron Roll" />
+<meta name="twitter:description" content="Call the play. Read the defense. Roll for the game." />
+<meta name="twitter:image" content="https://dicefootball.club/home-social-v1.jpg" />
+<link rel="manifest" href="/play/manifest.json"/><link rel="apple-touch-icon" href="/icons/apple-touch-icon.png"/><meta name="apple-mobile-web-app-capable" content="yes"/><meta name="mobile-web-app-capable" content="yes"/><meta name="apple-mobile-web-app-title" content="Dice Football"/></head>
+
+  <body>
+    <!-- Use static rendering with Expo Router to support running without JavaScript. -->
+    <noscript>
+      You need to enable JavaScript to run this app.
+    </noscript>
+    <!-- The root element for your Expo app. -->
+    <div id="root"></div>
+  <script src="/_expo/static/js/web/index-1d8be37aba424f358a8f01ef2816bf9d.js" defer></script>
+<!-- gr-boot-fallback -->
+<script>
+(function () {
+  var TIMEOUT = 12000;
+  function bootFailed() {
+    var root = document.getElementById('root');
+    if (!root || root.children.length > 0) return; // app mounted — all good
+    root.innerHTML =
+      '<div style="min-height:100vh;display:flex;align-items:center;justify-content:center;' +
+      'background:#2a1c10;padding:24px;font-family:Georgia,\'Times New Roman\',serif;">' +
+      '<div style="max-width:420px;background:#f2e8d4;border:1px solid #b49b6e;border-radius:8px;' +
+      'padding:28px 24px;text-align:center;box-shadow:0 12px 40px rgba(0,0,0,.5);">' +
+      '<div style="font-size:12px;letter-spacing:2px;font-weight:700;color:#8a6a10;">DICE FOOTBALL CLUB</div>' +
+      '<div style="font-size:22px;font-weight:800;color:#241a04;margin-top:6px;">Couldn&rsquo;t reach the stadium</div>' +
+      '<div style="font-size:15px;line-height:1.5;color:#4a3a1c;margin-top:10px;">The connection dropped before the ' +
+      'game finished loading. It usually comes right back &mdash; give it another try.</div>' +
+      '<button onclick="location.reload()" style="margin-top:18px;min-height:48px;padding:10px 28px;' +
+      'font-size:16px;font-weight:800;letter-spacing:1px;color:#1a1204;background:#c9a227;' +
+      'border:2px solid #8a6a10;border-radius:8px;cursor:pointer;">TRY AGAIN</button>' +
+      '</div></div>';
+  }
+  window.addEventListener('load', function () { setTimeout(bootFailed, 2000); });
+  setTimeout(bootFailed, TIMEOUT); // load may never fire if the bundle hangs
+})();
+</script>
+</body>
+</html>

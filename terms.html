@@ -1,0 +1,275 @@
+<!doctype html>
+<!--
+  Dice Football Club — Terms of Service (static, self-contained; commercial kit step 33)
+
+  Production contact: support@dicefootball.club
+  Governing law: New York
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<title>Terms of Service — Dice Football Club</title>
+<style>
+  :root {
+    --wood: #31200f;
+    --wood-edge: #1d1207;
+    --wood-mid: #4a3118;
+    --card: #f7efdb;
+    --card-edge: #d8c9a3;
+    --ink: #241a0e;
+    --ink-soft: #6b5c43;
+    --brass: #b98a2e;
+    --accent: #f4b41a;
+    --mist: #cbb99a;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--wood);
+    background-image: linear-gradient(180deg, var(--wood-edge) 0%, var(--wood) 120px, var(--wood) 100%);
+    color: var(--ink);
+    font-family: Georgia, "Iowan Old Style", "Palatino Linotype", Palatino, "Times New Roman", serif;
+    font-size: 17px;
+    line-height: 1.65;
+    padding: 0 0 64px;
+  }
+  a { color: #7a5410; text-decoration: underline; text-underline-offset: 2px; }
+  a:hover { color: var(--brass); }
+  a:focus-visible, .navbar a:focus-visible {
+    outline: 3px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+  .navbar {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 20px 20px 14px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 8px 18px;
+  }
+  .wordmark {
+    color: var(--card);
+    font-weight: 700;
+    font-size: 20px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+  .wordmark:hover { color: var(--accent); }
+  .navbar nav { margin-left: auto; display: flex; gap: 16px; }
+  .navbar nav a {
+    color: var(--mist);
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    padding-bottom: 2px;
+  }
+  .navbar nav a:hover { color: var(--accent); border-bottom-color: var(--brass); }
+  .navbar nav a[aria-current="page"] { color: var(--card); border-bottom-color: var(--accent); }
+  .sheet {
+    background: var(--card);
+    border: 1px solid var(--card-edge);
+    border-top: 6px solid var(--brass);
+    border-radius: 4px;
+    box-shadow: 0 14px 40px rgba(0,0,0,.55);
+    max-width: 760px;
+    margin: 8px auto 0;
+    padding: 40px 44px 48px;
+  }
+  .eyebrow {
+    color: var(--brass);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  h1 {
+    font-size: 38px;
+    line-height: 1.15;
+    font-weight: 700;
+    letter-spacing: .5px;
+    margin-bottom: 6px;
+  }
+  .dateline {
+    color: var(--ink-soft);
+    font-style: italic;
+    font-size: 15px;
+    margin-bottom: 26px;
+  }
+  .shortver {
+    border: 2px solid var(--brass);
+    border-radius: 6px;
+    background: linear-gradient(180deg, #fbf5e6, #f3e7c9);
+    padding: 20px 22px 18px;
+    margin: 0 0 34px;
+    box-shadow: inset 0 0 0 4px var(--card), inset 0 0 0 5px var(--card-edge);
+  }
+  .shortver .stamp {
+    color: var(--brass);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .shortver ul { padding-left: 20px; }
+  .shortver li { margin-bottom: 6px; }
+  .shortver li:last-child { margin-bottom: 0; }
+  h2 {
+    font-size: 23px;
+    font-weight: 700;
+    margin: 36px 0 10px;
+    padding-top: 18px;
+    border-top: 1px solid var(--card-edge);
+  }
+  h2 .no {
+    color: var(--brass);
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    margin-right: 10px;
+    vertical-align: 2px;
+  }
+  h3 { font-size: 17px; font-weight: 700; margin: 18px 0 6px; }
+  p { margin-bottom: 12px; }
+  ul, ol { margin: 0 0 12px 22px; }
+  li { margin-bottom: 6px; }
+  blockquote.covenant {
+    border: 2px solid var(--brass);
+    border-radius: 6px;
+    background: linear-gradient(180deg, #fbf5e6, #f3e7c9);
+    padding: 16px 20px;
+    margin: 0 0 12px;
+    font-style: italic;
+  }
+  .caps { text-transform: uppercase; }
+  footer {
+    max-width: 760px;
+    margin: 26px auto 0;
+    padding: 0 20px;
+    color: var(--mist);
+    font-size: 14px;
+    text-align: center;
+  }
+  footer a { color: var(--mist); }
+  footer a:hover { color: var(--accent); }
+  @media (max-width: 640px) {
+    body { font-size: 16px; }
+    .sheet { margin: 8px 10px 0; padding: 26px 20px 34px; border-radius: 3px; }
+    h1 { font-size: 29px; }
+    h2 { font-size: 20px; }
+    .navbar { padding: 16px 14px 10px; }
+    .navbar nav { margin-left: 0; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    * { animation: none !important; transition: none !important; }
+  }
+</style>
+</head>
+<body>
+
+<header class="navbar">
+  <a class="wordmark" href="/">Dice Football Club</a>
+  <nav aria-label="Legal pages">
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html" aria-current="page">Terms</a>
+    <a href="/support.html">Support</a>
+    <a href="/">Back to the game</a>
+  </nav>
+</header>
+
+<main class="sheet">
+  <p class="eyebrow">From the game box · House rules</p>
+  <h1>Terms of Service</h1>
+  <p class="dateline">Last updated: August 11, 2026 · Effective: August 11, 2026 · Version 1.1</p>
+
+  <aside class="shortver" aria-label="Plain-language summary">
+    <p class="stamp">The short version</p>
+    <ul>
+      <li><strong>The free game is free forever.</strong> Nothing free is ever taken away, and nothing in ranked play is ever for sale. That promise is written into these terms.</li>
+      <li>One optional subscription. <strong>Cancel anytime</strong>; you keep access through the period you paid for, then you land back on the full free game — never a locked screen.</li>
+      <li>Bought the Deluxe Box outright? <strong>You keep it forever.</strong></li>
+      <li>Play fair, don't cheat in ranked, don't abuse other players, don't copy the game.</li>
+      <li>Refund questions: <a href="mailto:support@dicefootball.club">support@dicefootball.club</a> for web purchases; Apple handles iOS ones.</li>
+    </ul>
+  </aside>
+
+  <h2><span class="no">1</span>Who these terms are between</h2>
+  <p>These terms are an agreement between you and <strong>DataAutomation.ai, LLC</strong> ("we," "us"), the operator of Dice Football Club (the "Game") at dicefootball.club / dicefootball.netlify.app and in any app store where we publish it. The Game also uses “Gridiron Roll” as its in-game tabletop moniker. By playing the Game you accept these terms. If you do not accept them, do not play — though we would rather you did.</p>
+
+  <h2><span class="no">2</span>Your license to play</h2>
+  <p>We grant you a personal, non-exclusive, non-transferable license to play the Game for your own enjoyment. The Game — its rules engine, artwork, voice recordings, music, text, and design — belongs to DataAutomation.ai, LLC and its licensors and is protected by copyright and other intellectual-property law. This license does not permit you to copy, resell, redistribute, or publicly rehost the Game or its assets, or to extract its paid content. Streaming, recording, and writing about your own play is welcome.</p>
+
+  <h2><span class="no">3</span>The free game — our covenant</h2>
+  <p>The following is a binding commitment, not marketing:</p>
+  <blockquote class="covenant">The free box is free forever. Nothing free is ever taken away. Ranked play is never for sale.</blockquote>
+  <p>In plain terms: the free tier of Dice Football Club is a complete game, playable without an account, without ads, and without payment — permanently. Features available in the free tier will not later be moved behind a paywall. And nothing you can buy will ever affect competitive (ranked) play: purchases are teams, audio, cosmetics, and history — never an advantage on the dice. Any future change to these terms that would break this section does not apply to you unless you expressly accept it.</p>
+
+  <h2><span class="no">4</span>Accounts</h2>
+  <p>An account is never required to play the free game. It lets your club profile, Big League access, and purchases follow you across devices. You may sign in with an email and password, an emailed magic link, or Google when offered. Keep your password and email account secure, and tell us promptly if you suspect unauthorized access. Accounts are for players 13 and older. You can delete your account at any time from within the Game; see the <a href="/delete-account.html">account-deletion page</a> and <a href="/privacy.html">Privacy Policy</a> for details.</p>
+
+  <h2><span class="no">5</span>Subscriptions</h2>
+  <ul>
+    <li><strong>Recurring billing.</strong> The subscription renews automatically at the end of each billing period at the then-current price, charged to your payment method by Stripe (web) or Apple (iOS), until you cancel.</li>
+    <li><strong>Cancel anytime.</strong> Cancellation takes effect at the end of the current paid period — you keep everything you paid for through that date. There is no cancellation fee and no penalty.</li>
+    <li><strong>Lapsing is soft.</strong> When a subscription ends — by cancellation or a failed payment after its grace period — your account falls back to the <em>full free tier</em>. You are never locked out of the Game, and nothing free is removed (see section 3). Your on-device saves remain yours.</li>
+    <li><strong>Price changes.</strong> If the subscription price changes, we will notify you in advance and the new price applies only from your next renewal — never mid-period, and never without the chance to cancel first.</li>
+  </ul>
+
+  <h2><span class="no">6</span>One-time purchases</h2>
+  <p>If you bought the Deluxe Box (or any other one-time product) outright, that purchase is <strong>perpetual</strong>: you keep it for as long as the Game exists, it never converts into a subscription, and it never expires. Every price is the whole price; every box lists everything inside.</p>
+
+  <h2><span class="no">7</span>Refunds</h2>
+  <ul>
+    <li><strong>Web purchases (Stripe):</strong> contact us at <a href="mailto:support@dicefootball.club">support@dicefootball.club</a> and we will work it out — we would rather refund a purchase than keep an unhappy player's money. A refunded purchase or a chargeback ends the corresponding entitlement.</li>
+    <li><strong>iOS purchases (Apple):</strong> Apple processes all App Store payments and handles their refunds under Apple's own policy; request one through Apple at <a href="https://reportaproblem.apple.com" rel="noopener">reportaproblem.apple.com</a>. We cannot issue Apple refunds ourselves.</li>
+  </ul>
+
+  <h2><span class="no">8</span>Fair play and acceptable use</h2>
+  <p>Keep it worthy of the table:</p>
+  <ul>
+    <li>No cheating, exploiting bugs for competitive advantage, or tampering with the Game client, servers, or dice in ranked or online play. (Found a bug? Tell us — that's a favor, not a violation.)</li>
+    <li>No harassment or abuse of other players; display names must not be hateful, obscene, or impersonate someone else.</li>
+    <li>No scraping, ripping, or redistributing the Game's paid content, artwork, or audio.</li>
+    <li>No use of the Game or its services for anything unlawful, and no interference with other players' access.</li>
+  </ul>
+  <p>We may suspend or terminate accounts that violate this section. Termination for cause does not entitle you to a refund of a knowingly abused subscription, but we will always explain the reason and hear you out.</p>
+
+  <h2><span class="no">9</span>The service, as-is</h2>
+  <p class="caps">The Game is provided "as is" and "as available," without warranties of any kind, express or implied, including merchantability, fitness for a particular purpose, and non-infringement. We do not warrant that the Game will be uninterrupted, error-free, or that the dice will ever forgive you on 4th and long.</p>
+  <p>Some jurisdictions do not allow the exclusion of certain warranties, so parts of the paragraph above may not apply to you. Nothing in these terms limits rights you have as a consumer under mandatory local law.</p>
+
+  <h2><span class="no">10</span>Limitation of liability</h2>
+  <p class="caps">To the maximum extent permitted by law, DataAutomation.ai, LLC will not be liable for indirect, incidental, special, consequential, or punitive damages, or for lost data, profits, or goodwill, arising from your use of the Game. Our total liability for all claims relating to the Game is limited to the greater of (a) the amount you paid us in the twelve months before the claim arose, or (b) ten U.S. dollars.</p>
+
+  <h2><span class="no">11</span>Changes to the Game and these terms</h2>
+  <p>The Game evolves — rules get balanced, content gets added. We may update these terms; when we do, we will update the date and version number at the top and, for material changes, give notice in the Game before they take effect. Continuing to play after notice means you accept the updated terms — except that no change may break the covenant in section 3 without your express acceptance.</p>
+
+  <h2><span class="no">12</span>Governing law</h2>
+  <p>These terms are governed by the laws of the State of <strong>New York</strong>, United States, without regard to conflict-of-law rules. Disputes will be resolved in the state or federal courts located in New York, and both sides consent to their jurisdiction — though we would genuinely prefer you email us first: nearly everything can be fixed at <a href="mailto:support@dicefootball.club">support@dicefootball.club</a>.</p>
+
+  <h2><span class="no">13</span>Contact</h2>
+  <p><strong>DataAutomation.ai, LLC</strong><br>
+  <a href="mailto:support@dicefootball.club">support@dicefootball.club</a><br>
+  <a href="/support.html">Dice Football Club Support</a></p>
+</main>
+
+<footer>
+  <p>Dice Football Club · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/support.html">Support</a> · <a href="/delete-account.html">Delete account</a> · <a href="/">Back to the game</a></p>
+  <p>© <span data-current-year>2026</span> DataAutomation.ai, LLC</p>
+</footer>
+
+<script>
+  document.querySelectorAll('[data-current-year]').forEach(function (node) {
+    node.textContent = String(new Date().getFullYear());
+  });
+</script>
+</body>
+</html>

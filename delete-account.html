@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="index, follow">
+<meta name="description" content="How to delete a Dice Football Club account and its associated data.">
+<title>Delete Your Account — Dice Football Club</title>
+<style>
+  :root { --wood:#31200f; --ink:#efe3c4; --felt:#082d1d; --felt2:#041c13; --gold:#d9aa25; --line:#8a6920; --danger:#ca4a35; }
+  * { box-sizing:border-box; }
+  html { background:var(--wood); color:var(--ink); font-family:Georgia,'Times New Roman',serif; }
+  body { margin:0; min-height:100vh; background:radial-gradient(circle at 50% -20%,#6b4625 0,#31200f 47%,#1d1208 100%); }
+  a { color:#f2c94f; text-underline-offset:3px; }
+  a:focus-visible { outline:3px solid #fff; outline-offset:4px; }
+  .navbar { min-height:74px; display:flex; align-items:center; justify-content:space-between; gap:24px; padding:18px clamp(20px,5vw,72px); border-bottom:1px solid rgba(217,170,37,.45); background:rgba(19,11,5,.72); }
+  .wordmark { color:#fff2cf; text-decoration:none; text-transform:uppercase; font-weight:900; letter-spacing:2px; font-family:Impact,'Arial Narrow',sans-serif; font-size:22px; }
+  nav { display:flex; flex-wrap:wrap; gap:18px; }
+  nav a { color:#dbcba8; text-decoration:none; font:700 13px/1.2 Arial,sans-serif; text-transform:uppercase; letter-spacing:.8px; }
+  main { width:min(860px,calc(100% - 32px)); margin:40px auto; padding:clamp(26px,5vw,58px); border:2px solid var(--line); border-radius:22px; background:linear-gradient(145deg,rgba(8,45,29,.98),rgba(4,28,19,.98)); box-shadow:0 24px 70px rgba(0,0,0,.42); }
+  .eyebrow { margin:0 0 12px; color:#f5bd28; font:900 12px/1.2 Arial,sans-serif; letter-spacing:3px; text-transform:uppercase; }
+  h1 { margin:0; color:#fff0c8; font:900 clamp(36px,7vw,64px)/.98 Impact,'Arial Narrow',sans-serif; text-transform:uppercase; }
+  .lede { margin:20px 0 30px; color:#d9cbaa; font-size:19px; line-height:1.6; }
+  .steps { counter-reset:step; display:grid; gap:16px; padding:0; }
+  .steps li { counter-increment:step; list-style:none; position:relative; padding:20px 20px 20px 68px; border:1px solid rgba(217,170,37,.5); border-radius:12px; background:rgba(0,0,0,.17); color:#ded0af; font-size:17px; line-height:1.5; }
+  .steps li::before { content:counter(step); position:absolute; left:18px; top:17px; width:34px; height:34px; display:grid; place-items:center; border-radius:50%; background:#d9aa25; color:#171006; font:900 18px/1 Arial,sans-serif; }
+  h2 { margin:36px 0 10px; color:#ffd45b; font:900 24px/1.1 Impact,'Arial Narrow',sans-serif; text-transform:uppercase; }
+  p, li { color:#d9cbaa; font-size:16px; line-height:1.6; }
+  .warning { margin:24px 0; padding:18px 20px; border:1px solid var(--danger); border-left-width:6px; border-radius:9px; background:rgba(123,29,18,.2); }
+  footer { padding:24px; text-align:center; color:#a99a7b; font:14px/1.7 Arial,sans-serif; }
+  @media (max-width:700px) { .navbar { align-items:flex-start; flex-direction:column; } main { margin-top:20px; } }
+</style>
+</head>
+<body>
+<header class="navbar">
+  <a class="wordmark" href="/">Dice Football Club</a>
+  <nav aria-label="Support and legal pages">
+    <a href="/privacy.html">Privacy</a>
+    <a href="/terms.html">Terms</a>
+    <a href="/support.html">Support</a>
+    <a href="/">Back to the game</a>
+  </nav>
+</header>
+
+<main>
+  <p class="eyebrow">Account controls</p>
+  <h1>Delete Your Account</h1>
+  <p class="lede">You can permanently delete a Dice Football Club account without contacting support. The anonymous preseason game has no server account to delete; local game saves can be removed by clearing site data or deleting the app.</p>
+
+  <ol class="steps">
+    <li>Open <a href="/">Dice Football Club</a> and sign in to the account you want removed.</li>
+    <li>Open the menu, choose <strong>Settings</strong>, then choose <strong>Account</strong>.</li>
+    <li>Select <strong>Delete account</strong>, type <strong>DELETE</strong> when asked, and confirm.</li>
+  </ol>
+
+  <p class="warning"><strong>This is permanent.</strong> Deletion removes the authentication identity, club profile, and active entitlement records tied to the account. It cannot be undone by support.</p>
+
+  <h2>Request deletion by email</h2>
+  <p>If you cannot sign in, email <a href="mailto:support@dicefootball.club?subject=Dice%20Football%20Club%20Account%20Deletion">support@dicefootball.club</a> from the account email and write “Dice Football Club account deletion” in the subject. We may ask for limited verification so someone else cannot delete your account.</p>
+
+  <h2>What may remain</h2>
+  <p>Payment or consent records that law requires us to retain may remain for the required period in a form no longer connected to an active account. Mail delivery and security logs expire under provider retention schedules. See sections 9–11 of the <a href="/privacy.html">Privacy Policy</a>.</p>
+
+  <h2>Purchases</h2>
+  <p>Deleting an account does not itself request a refund and may end access to purchases associated only with that identity. Contact <a href="/support.html">support</a> before deletion if you need a billing question resolved.</p>
+</main>
+
+<footer>
+  <div>Dice Football Club · <a href="/privacy.html">Privacy</a> · <a href="/terms.html">Terms</a> · <a href="/support.html">Support</a></div>
+  <div>© <span data-current-year>2026</span> DataAutomation.ai, LLC</div>
+</footer>
+<script>document.querySelectorAll('[data-current-year]').forEach(function(n){n.textContent=String(new Date().getFullYear());});</script>
+</body>
+</html>
