@@ -1,0 +1,41 @@
+name: Publish Engine 2.19 preview
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/publish-preview.yml'
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Fetch Engine 2.19.0 static export
+        run: |
+          set -euo pipefail
+          curl -fsSL -o site.zip "https://litter.catbox.moe/cd9oe4.zip"
+          echo "8f74fc3c1ac745ecc1ba0453b513e7ac  site.zip" | md5sum -c
+          mkdir _site
+          unzip -q site.zip -d _site
+          touch _site/.nojekyll
+          test -f _site/index.html
+          test -f _site/play/index.html
+          test -d _site/_expo
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
